@@ -80,7 +80,7 @@ import OSLog
     
     ///Log faults (Errors in code, but where no error object is provided)
     ///Creates an error in Crashlytics with optional error code
-    public class func fault(message: String, code: LogErrorCode? = .defaultError, in category: LogCategory) {
+    public class func fault(message: String, code: LogErrorCode? = .defaultErrorCode, in category: LogCategory) {
         //Internal logging
         Logger(subsystem: subsystem, category: category.rawValue).fault("Fault: \(message, privacy: .public)")
         //Create an error and Notify crashlytics
