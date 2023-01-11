@@ -38,6 +38,6 @@ public struct LogErrorCode: RawRepresentable {
     public init?(rawValue: Int) {
         self.rawValue = rawValue
     }
-    public static let defaultError = LogErrorCode(rawValue: 1)!
-    public static let unexpectedCodePath = LogErrorCode(rawValue: 1025)!
+    public static let defaultErrorCode = LogErrorCode(rawValue: 1)!
+    public static let unexpectedCodePathErrorCode = LogErrorCode(rawValue: 1025)!
 }
