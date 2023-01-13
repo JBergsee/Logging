@@ -11,11 +11,11 @@ import UIKit
 import OSLog
 
 
-@objc public enum logLevel: Int {
-    case fault, // Bug in program
-         error, //Error object thrown
-         notify, //Notice about specific occurrence
-         trace, //Follow program execution
+@objc public enum LogLevel: Int {
+    case error, // Error thrown (that is not expected, captured and tolerated)
+         fault, // Bug in program
+         notify, // Notice about specific occurrence
+         trace, // Follow program execution
          debug // Useful for debugging only
 }
 
@@ -31,11 +31,11 @@ import OSLog
     
     @objc public static var firebase: FirebaseWrapping?
     
-    @objc public class func log(message: String, level: logLevel, category: String?) {
+    @objc public class func log(message: String, level: LogLevel, category: String?) {
         Log.log(error: nil, message: message, level: level, category: category)
     }
 
-    @objc public class func log(error:NSError? = nil, message: String, level: logLevel, category: String?) {
+    @objc public class func log(error: NSError? = nil, message: String, level: LogLevel, category: String?) {
         let cat = LogCategory(rawValue: category ?? "Category not set") ?? .unknown
         
         switch level {
@@ -120,7 +120,7 @@ import OSLog
     
     
     ///Convenience function for creating errors
-    public static func createError(_ message: String, code: Int = 0, domain: String = "FlightBriefingErrorDomain", function: String = #function, file: String = #file, line: Int = #line) -> NSError {
+    public static func createError(_ message: String, code: Int = 0, domain: String = "DefaultErrorDomain", function: String = #function, file: String = #file, line: Int = #line) -> NSError {
         
         let functionKey = "\(domain).function"
         let fileKey = "\(domain).file"
