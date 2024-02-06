@@ -1,5 +1,5 @@
 import XCTest
-@testable import Logging
+@testable import JBLogging
 import OSLog
 
 public extension LogCategory {
