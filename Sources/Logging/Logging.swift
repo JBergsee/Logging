@@ -27,10 +27,11 @@ import OSLog
  */
 @objc public class Log: NSObject {
     
-    static var subsystem = Bundle.main.bundleIdentifier!
-    
-    @objc public static var firebase: FirebaseWrapping?
-    
+    static let subsystem = Bundle.main.bundleIdentifier!
+
+    /// firebase must only be set once in code to avoid unknown shared mutable state.
+    @objc nonisolated(unsafe) public static var firebase: FirebaseWrapping?
+
     @objc public class func log(message: String, level: LogLevel, category: String?) {
         Log.log(error: nil, message: message, level: level, category: category)
     }

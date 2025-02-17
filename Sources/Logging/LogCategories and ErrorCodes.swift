@@ -18,7 +18,7 @@ public extension LogCategory {
 }
 ```
 */
-public struct LogCategory: RawRepresentable {
+public struct LogCategory: RawRepresentable, Sendable {
     public var rawValue: String
     public init?(rawValue: String) {
         self.rawValue = rawValue
@@ -33,7 +33,7 @@ public struct LogCategory: RawRepresentable {
     static let unknown = LogCategory(rawValue: "Unknown, change this!")!
 }
 
-public struct LogErrorCode: RawRepresentable {
+public struct LogErrorCode: RawRepresentable, Sendable {
     public var rawValue: Int
     public init?(rawValue: Int) {
         self.rawValue = rawValue
